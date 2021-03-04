@@ -1,14 +1,13 @@
 import React, {useState} from "react";
 import {View, TextInput, Button, StyleSheet } from 'react-native';
 
-
-
-
+//user inout for new goal
 const GoalInput = props => {
   const [enteredGoal, setEnteredGoal] = useState('');
   const goalInputHandler = (enteredText)=> {
     setEnteredGoal(enteredText);
   };
+  //add new goal
   const addGoalHandler = goalTitle => {
     setCourseGoals(currentGoals => [...courseGoals, {uid: Math.random().toString(), value: goalTitle}]);
     //ORs
@@ -22,8 +21,10 @@ const GoalInput = props => {
           onChangeText={goalInputHandler}
           value={enteredGoal}
         />
-        <Button title="ADD HERE"
-        onPress={props.onAddGoal.bind(this, enteredGoal)}/>
+        <Button style={styles.buttonAdd} title="ADD"
+        onPress={props.onAddGoal.bind(this, enteredGoal)}
+        color="#B0C4DE"
+        />
       </View>
 );
 };
@@ -37,9 +38,10 @@ const styles = StyleSheet.create({
     alignItems: "center"},
   input: {
     width: "80%",
-    borderBottomColor: "black", 
+    borderColor: "black", 
     borderWidth: 1, 
-    padding: 10
+    padding: 10,
+    fontSize: 20,
   },
 })
 
